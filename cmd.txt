@@ -1,0 +1,3 @@
+compress left
+compress down
+rotate left

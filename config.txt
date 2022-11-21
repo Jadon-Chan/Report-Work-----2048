@@ -1,0 +1,3 @@
+SIZE = 4
+RAND = 60
+BOX = TRUE
