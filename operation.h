@@ -5,7 +5,8 @@
 #include <math.h>
 #include "variable.h"
 
-void show(void)
+
+void show_raw(void)
 {
     for (int i = 0; i < size; i++)
     {
@@ -36,6 +37,19 @@ void line(int width)
     }
     printf("+\n");
 }
+void line_to_dup(int width)
+{
+    for (int i = 0; i < size; i++)
+    {
+        putc('+', duplicate);
+        for (int i = 0; i < width; i++)
+        {
+            putc('-', duplicate);
+        }
+    }
+    fprintf(duplicate, "+\n");
+
+}
 void show_in_box(void)
 {
     int max = mat[0][0];
@@ -44,7 +58,7 @@ void show_in_box(void)
             if (max < mat[i][j])
                 max = mat[i][j];
     int width = 1;
-    while (max/(int)(pow(10, width))>9)
+    while (max/(int)(pow(10, width))>=1)
         width++;
     for (int i = 0; i < size; i++)
     {
@@ -54,6 +68,24 @@ void show_in_box(void)
         printf("|\n");
     }
     line(width);
+    if (duplicate)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            line_to_dup(width);
+            for (int j = 0; j < size; j++)
+                fprintf(duplicate, "|%*d", width, mat[i][j]);
+            fprintf(duplicate, "|\n");
+        }
+        line_to_dup(width);
+    }
+}
+void show(void)
+{
+    if (box)
+        show_in_box();
+    else
+        show_raw();
 }
 // produce_random() is used to generate a sizebysize matrix with random integer value in
 // range[0, 20], and then print it

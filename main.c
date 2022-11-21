@@ -8,7 +8,7 @@ int size;
 double rand_ratio;
 int mat[100][100] = {0};
 char map[100][100] = {'\0'};
-char logg[100] = {};
+char logg[200] = {};
 int box = 0;
 FILE * duplicate;
 int main(void)

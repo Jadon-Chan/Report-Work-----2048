@@ -16,7 +16,7 @@ void configure(void)
     }
     while (fgets(line, 100, ptr))
     {
-        char temp[20];
+        char temp[100];
         strcpy(temp, line);
         temp[7] = '\0';
         if (strcmp(temp, "SIZE = ") == 0)
@@ -38,7 +38,7 @@ void configure(void)
             temp[6] = '\0';
             if (strcmp(temp, "LOG = ") == 0)
             {
-                sscanf(line, "LOG = %s", &logg);
+                sscanf(line, "LOG = %s", logg);
                 duplicate = fopen(logg, "w");
             }
             else if (strcmp(temp, "BOX = ") == 0)
