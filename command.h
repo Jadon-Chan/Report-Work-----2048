@@ -51,3 +51,45 @@ void cope(FILE *cmd)
         }
     }
 }
+int instant(char ch)
+{
+    char ins[5] = "klij";
+    int t = strchr(ins, ch)-ins;
+    int isfull = 1;
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            if(mat[i][j] == 0)
+                isfull = 0;
+        } 
+    }
+    int temp[100][100];
+    memcpy(temp, mat, sizeof(mat));
+    for (int i = 0; i < t; i++)
+    {
+        rotate();
+    }
+    combine();
+    for (int i = 0; i < 4-t; i++)
+    {
+        rotate();
+    }
+    int flag = 1;
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            if (mat[i][j] != temp[i][j])
+                flag = 0;
+        }
+    }
+    if (flag&&isfull)
+    {
+        printf("Game Over!\n");
+        return 1;
+    }
+    produce();
+    show();
+    return 0;
+}

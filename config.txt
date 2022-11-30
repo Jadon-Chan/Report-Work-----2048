@@ -1,4 +1,3 @@
 SIZE = 4
-RAND = 60
 BOX = TRUE
 LOG = D:\\Users\\JadonChan\\AppData\\Local\\Programs\\C\\2048\\log.txt
