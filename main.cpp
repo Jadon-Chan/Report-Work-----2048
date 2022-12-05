@@ -1,3 +1,4 @@
+#include <sstream>
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
@@ -5,8 +6,9 @@
 #include "mine_sweep.h"
 #include "operation.h"
 #include "command.h"
-int size;
-double rand_ratio;
+char mark[100][100] = {};
+int size = -1;
+double rand_ratio = -1;
 int mat[100][100] = {0};
 char map[100][100] = {'\0'};
 char logg[200] = {};
@@ -15,7 +17,7 @@ FILE *duplicate;
 int main(void)
 {
     configure();
-    FILE *cmd = fopen("D:\\Users\\JadonChan\\AppData\\Local\\Programs\\C\\2048\\cmd.txt", "r");
+    FILE *cmd = fopen("hahaD:\\Users\\JadonChan\\AppData\\Local\\Programs\\C\\2048\\cmd.txt", "r");
     if (cmd)
     {
         char temp[30];
@@ -50,8 +52,13 @@ int main(void)
     }
     else
     {
-        printf("Can't open such a file!\n");
+        configure();
+        minemap();
+        fill();
+        showmap();
+        
+        play();
     }
-
+    system("pause");
     return 0;
 }

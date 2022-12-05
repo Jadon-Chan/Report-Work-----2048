@@ -4,14 +4,15 @@
 
 void configure(void)
 {
-    FILE * ptr = fopen("D:\\Users\\JadonChan\\AppData\\Local\\Programs\\C\\2048\\config.txt", "r");
+    FILE * ptr = fopen("hahaD:\\Users\\JadonChan\\AppData\\Local\\Programs\\C\\2048\\config.txt", "r");
     char line[100];
     size = -1;
     rand_ratio = 0;
     if (!ptr)
     {
-        size = 4;
-        printf("Wrong Configuration!\n");
+        size = 9;
+        rand_ratio = 30;
+        box = 1;
         return;
     }
     while (fgets(line, 100, ptr))
